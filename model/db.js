@@ -1,3 +1,10 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('http://localhost/myprj_db');
+mongoose.connect('mongodb://localhost/test');
+
+
+if(mongoose.connection.readyState == 0)
+{
+	console.log('Connection Error');
+	return 
+}

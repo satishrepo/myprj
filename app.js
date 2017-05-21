@@ -4,16 +4,20 @@ var path = require('path');
 
 
 var index = require('./routes/index');
+var users = require('./routes/users');
 
 
 var db = require('./model/db');
-var users = require('./model/users');
+var users_model = require('./model/users');
 
 
 
 var app = express();
 
 app.use('/',index);
+app.use('/users',users);
+
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','jade');
