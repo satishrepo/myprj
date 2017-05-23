@@ -3,4 +3,13 @@ extends template
 block content	
 	ul
 		for user in users
-			li= user.name
+			li #{user.name}, #{user.email} 
+				form(action="users" name="deleteuser" method="post")
+					input(type="hidden" name="email" value="#{user.email}")
+					input(type="hidden" name="_method" value="DELETE")
+					input(type="submit" value="X") 
+	div
+		form(action="/users" name="userform" method="POST")
+			input(name="name") 
+			input(name="email") 
+			input(type="submit" name="save") 

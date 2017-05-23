@@ -52,6 +52,30 @@ router.route('/')
 			}
 		})
 	})	
+})
+.delete(function(req, res)
+{
+	var email = req.body.email;
+
+	mongoose.model('users').find({email:email}, function(err, result)
+	{
+		if(err)
+		{
+			console.log(err);
+			return
+		}
+		if(!result.length)
+		{
+			console.log('Data not fund with this email');
+			res.redirect('/users');
+			return;
+		}
+		result[0].remove(function(err1, data)
+		{
+			console.log('deleted');
+			res.redirect('/users');
+		})
+	});
 });
 
 module.exports = router;
