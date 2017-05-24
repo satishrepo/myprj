@@ -1,8 +1,22 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
 
-router.route('/')
+var userController = require('../controllers/userController');
+
+router.get('/', userController.getUsers);
+router.post('/', userController.saveUser);
+router.delete('/', userController.removeUser);
+
+
+
+
+module.exports = router;
+
+
+
+// var mongoose = require('mongoose');
+
+/*router.route('/')
 .get(function(req, res, next)
 {
 	mongoose.model('users').find({},function(err,result)
@@ -67,7 +81,7 @@ router.route('/')
 		if(!result.length)
 		{
 			console.log('Data not fund with this email');
-			res.redirect('/users');
+			res.redirect('/users');	
 			return;
 		}
 		result[0].remove(function(err1, data)
@@ -77,5 +91,6 @@ router.route('/')
 		})
 	});
 });
-
 module.exports = router;
+*/
+

@@ -8,8 +8,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 
-var db = require('./model/db');
-var users_model = require('./model/users');
+var db = require('./models/db');
+var users_model = require('./models/users');
 
 
 
