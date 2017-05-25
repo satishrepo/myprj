@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var logger = require('../utils/logger');
 
 var user = {
 
@@ -9,7 +10,7 @@ var user = {
 			mongoose.model('users').find({}, function(err, result)
 			{
 				if(err)
-				{
+				{	
 					return next({status:'error', statusCode:500, data:err});
 				}
 				return next({status:'OK', statusCode:200, data:result});
@@ -17,6 +18,8 @@ var user = {
 		}
 		catch(e)
 		{
+			logger.logger.log('userController-getAllUser - Error : '+e.toString());
+			logger.wlogger.log('error','userController-getAllUser - Error : '+e.toString())
 			return next({status:'error', statusCode:500, data:e.toString()});
 		}
 	},

@@ -6,7 +6,7 @@ var user = {
 		userService.getAllUsers(function(response)
 		{
 			res.format(
-			{
+			{ 	
 				html:function()
 				{
 					if(response.statusCode !== 200)

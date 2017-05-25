@@ -1,0 +1,7 @@
+
+-----------------------------------------------------------
+LOGGED[2017-05-25T13:16:36.309Z] - userController-getAllUser - Error : MissingSchemaError: Schema hasn't been registered for model "userss".
+Use mongoose.model(name, schema)
+-----------------------------------------------------------
+LOGGED[2017-05-25T13:17:13.078Z] - userController-getAllUser - Error : MissingSchemaError: Schema hasn't been registered for model "userss".
+Use mongoose.model(name, schema)

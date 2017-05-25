@@ -1,0 +1,3 @@
+{"level":"error","message":"userController-getAllUser - Error : MissingSchemaError: Schema hasn't been registered for model \"userss\".\nUse mongoose.model(name, schema)","timestamp":"2017-05-25T13:14:57.010Z"}
+{"level":"error","message":"userController-getAllUser - Error : MissingSchemaError: Schema hasn't been registered for model \"userss\".\nUse mongoose.model(name, schema)","timestamp":"2017-05-25T13:16:36.311Z"}
+{"level":"error","message":"userController-getAllUser - Error : MissingSchemaError: Schema hasn't been registered for model \"userss\".\nUse mongoose.model(name, schema)","timestamp":"2017-05-25T13:17:13.080Z"}
