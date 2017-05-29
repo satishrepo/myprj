@@ -4,6 +4,7 @@ var router = express.Router();
 var userController = require('../controllers/userController');
 
 router.get('/', userController.getUsers);
+router.get('/:username', userController.getUserDetail);
 router.post('/', userController.saveUser);
 router.delete('/', userController.removeUser);
 

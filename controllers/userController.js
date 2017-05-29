@@ -13,7 +13,30 @@ var user = {
 					{
 						return res.render('error', {error:response.data});
 					}
-					return res.render('users', {users:response.data});
+					return res.render('./user/users', {users:response.data});
+				},
+				json:function()
+				{
+					return res.json(response);
+				}
+			});
+		});
+	},
+	getUserDetail : function(req, res)
+	{
+		var username = req.params.username;
+
+		userService.getUserDetail(username, function(response)
+		{
+			res.format(
+			{ 	
+				html:function()
+				{
+					if(response.statusCode !== 200)
+					{
+						return res.render('error', {error:response.data});
+					}
+					return res.render('/user/users', {users:response.data});
 				},
 				json:function()
 				{
@@ -25,8 +48,35 @@ var user = {
 	saveUser : function(req, res)
 	{
 		var user = {
+			username : req.body.username,
 			email : req.body.email,
-			name : req.body.name
+		};
+
+		userService.saveUser(user, function(response)
+		{
+			res.format(
+			{
+				html:function()
+				{
+					if(response.statusCode !== 200)
+					{
+						return res.render('error', {error:response.data});
+					}
+					res.redirect('/users');
+				},
+				json:function()
+				{
+					return res.json(response);
+				}
+			});
+		});
+	},
+	updateUserInfo : function(req, res)
+	{
+		var user = {
+			user : req.body.userid,
+			phone : req.body.phone,
+			sex : req.body.sex,
 		};
 
 		userService.saveUser(user, function(response)
@@ -70,7 +120,8 @@ var user = {
 				}
 			});
 		});
-	}
+	},
+
 };
 
 module.exports = user;

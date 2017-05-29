@@ -23,6 +23,26 @@ var user = {
 			return next({status:'error', statusCode:500, data:e.toString()});
 		}
 	},
+	getUserDetail : function(username, next)
+	{
+		try
+		{
+			mongoose.model('users').find({username:username}).populate('user').exec(function(err, result)
+			{
+				if(err)
+				{	
+					return next({status:'error', statusCode:500, data:err});
+				}
+				return next({status:'OK', statusCode:200, data:result});
+			});	
+		}
+		catch(e)
+		{
+			logger.logger.log('userController-getAllUser - Error : '+e.toString());
+			logger.wlogger.log('error','userController-getAllUser - Error : '+e.toString())
+			return next({status:'error', statusCode:500, data:e.toString()});
+		}
+	},
 	saveUser : function(userObj, next)
 	{
 		if(typeof userObj !== 'object')
