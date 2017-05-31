@@ -5,3 +5,11 @@ Use mongoose.model(name, schema)
 -----------------------------------------------------------
 LOGGED[2017-05-25T13:17:13.078Z] - userController-getAllUser - Error : MissingSchemaError: Schema hasn't been registered for model "userss".
 Use mongoose.model(name, schema)
+-----------------------------------------------------------
+LOGGED[2017-05-30T13:14:46.146Z] - userController-getAllUser - Error : MissingSchemaError: Schema hasn't been registered for model "user_detail".
+Use mongoose.model(name, schema)
+-----------------------------------------------------------
+LOGGED[2017-05-30T13:15:24.496Z] - userController-getAllUser - Error : MissingSchemaError: Schema hasn't been registered for model "users_details".
+Use mongoose.model(name, schema)
+-----------------------------------------------------------
+LOGGED[2017-05-31T07:20:02.193Z] - userController-getAllUser - Error : ReferenceError: usename is not defined

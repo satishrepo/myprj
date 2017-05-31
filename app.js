@@ -4,13 +4,13 @@ var bodyParser = require('body-parser');
 var methodOverride 	= require('method-override');
 // console.log(express);
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
 
 var db = require('./models/db');
 var users_model = require('./models/users');
 
+
+var index = require('./routes/index');
+var users = require('./routes/users');
 
 
 var app = express();
@@ -32,6 +32,7 @@ app.use(methodOverride(function(req, res)
 
 app.use('/',index);
 app.use('/users',users);
+app.use('/user',users);
 
 
 

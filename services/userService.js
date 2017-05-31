@@ -27,12 +27,13 @@ var user = {
 	{
 		try
 		{
-			mongoose.model('users').find({username:username}).populate('user').exec(function(err, result)
+			mongoose.model('users').find({username:username}).populate('users_detail').exec(function(err, result)
 			{
 				if(err)
 				{	
 					return next({status:'error', statusCode:500, data:err});
 				}
+				console.log(result);
 				return next({status:'OK', statusCode:200, data:result});
 			});	
 		}
@@ -43,22 +44,40 @@ var user = {
 			return next({status:'error', statusCode:500, data:e.toString()});
 		}
 	},
-	saveUser : function(userObj, next)
+	saveUser : function(userObj, detailObj, next)
 	{
-		if(typeof userObj !== 'object')
+		if(typeof detailObj !== 'object')
 		{
 			return next({status:'error', statusCode:500, data:'Please send valid user object'});
 		}
 
 		try
 		{
-			mongoose.model('users').create(userObj, function(err, result)
+			mongoose.model('users_detail').create(detailObj, function(err, result)
 			{
 				if(err)
 				{
 					return next({status:'error', statusCode:500, data:err});
 				}
-				return next({status:'OK', statusCode:200, data:'User saved successfully.'});
+
+				if(typeof userObj !== 'object')
+				{
+					return next({status:'OK', statusCode:200, data:'User saved successfully.'});
+				}
+
+				userObj.detail = result._id;
+
+				mongoose.model('users').create(userObj, function(err, result)
+				{
+					if(err)
+					{
+						return next({status:'error', statusCode:500, data:err});
+					}
+
+					return next({status:'OK', statusCode:200, data:'User saved successfully.'});
+				});
+
+				// return next({status:'OK', statusCode:200, data:'User saved successfully.'});
 			});	
 		}
 		catch(e)

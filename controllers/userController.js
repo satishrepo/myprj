@@ -4,7 +4,7 @@ var user = {
 	getUsers : function(req, res)
 	{
 		userService.getAllUsers(function(response)
-		{
+		{	
 			res.format(
 			{ 	
 				html:function()
@@ -36,7 +36,7 @@ var user = {
 					{
 						return res.render('error', {error:response.data});
 					}
-					return res.render('/user/users', {users:response.data});
+					return res.render('./user/detail', {detail:response.data});
 				},
 				json:function()
 				{
@@ -52,7 +52,12 @@ var user = {
 			email : req.body.email,
 		};
 
-		userService.saveUser(user, function(response)
+		var detail = {
+			phone : req.body.phone,
+			sex : req.body.sex
+		};
+
+		userService.saveUser(user, detail, function(response)
 		{
 			res.format(
 			{
