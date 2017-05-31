@@ -1,11 +1,11 @@
-//extends template
+extends ../template
 	
 block content	
 	ul
 		for user in users
 			li: a(href="/users/"+user.username) #{user.username} - #{user.email} 
 			form(action="users" name="deleteuser" method="post")
-				input(type="hidden" name="email" value="#{user.email}")
+				input(type="hidden" name="email" value= user.email)
 				input(type="hidden" name="_method" value="DELETE")
 				input(type="submit" value="X") 
 	div

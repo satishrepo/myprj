@@ -27,13 +27,13 @@ var user = {
 	{
 		try
 		{
-			mongoose.model('users').find({username:username}).populate('users_detail').exec(function(err, result)
+			mongoose.model('users').find({username:username}).populate('detail').exec(function(err, result)
 			{
 				if(err)
 				{	
 					return next({status:'error', statusCode:500, data:err});
 				}
-				console.log(result);
+
 				return next({status:'OK', statusCode:200, data:result});
 			});	
 		}
