@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
+var loginAuth = require('../middleware/loginAuth');
+
 var userController = require('../controllers/userController');
 
 router.get('/', userController.getUsers);
 router.get('/:username', userController.getUserDetail);
-router.post('/', userController.saveUser);
-router.delete('/', userController.removeUser);
+router.post('/', loginAuth, userController.saveUser);
+router.delete('/', loginAuth, userController.removeUser);
 
 
 

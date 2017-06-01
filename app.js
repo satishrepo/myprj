@@ -2,6 +2,9 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride 	= require('method-override');
+var cookieParser 	= require('cookie-parser');
+var session 	= require('express-session');
+
 // console.log(express);
 
 
@@ -11,6 +14,9 @@ var users_model = require('./models/users');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
+
+var sess = require('./middleware/session');
 
 
 var app = express();
@@ -30,9 +36,16 @@ app.use(methodOverride(function(req, res)
 	}
 }));
 
+// session initialization
+app.use(cookieParser());
+app.use(session({secret:'satishpur', resave:true, saveUninitialized:true}));
+
+app.use(sess);
+
 app.use('/',index);
 app.use('/users',users);
 app.use('/user',users);
+app.use('/login',login);
 
 
 
