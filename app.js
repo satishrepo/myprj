@@ -8,7 +8,7 @@ var session 	= require('express-session');
 // console.log(express);
 
 
-var config = require('./config');
+var db = require('./database');
 var users_model = require('./api/models/users');
 
 
