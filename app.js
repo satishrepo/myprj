@@ -8,8 +8,8 @@ var session 	= require('express-session');
 // console.log(express);
 
 
-var db = require('./models/db');
-var users_model = require('./models/users');
+var config = require('./config');
+var users_model = require('./api/models/users');
 
 
 var index = require('./routes/index');
@@ -35,6 +35,10 @@ app.use(methodOverride(function(req, res)
 		return method;
 	}
 }));
+
+// Static files load 
+app.use(express.static(path.join(__dirname, 'client')));
+
 
 // session initialization
 app.use(cookieParser());

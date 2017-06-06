@@ -3,6 +3,8 @@ var userService = require('../services/userService');
 var user = {
 	getUsers : function(req, res)
 	{
+		// req.headers.accept = 'application/json';
+		// console.log(req.headers);
 		userService.getAllUsers(function(response)
 		{	
 			res.format(
