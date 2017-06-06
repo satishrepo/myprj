@@ -26,6 +26,10 @@ var user = {
 	{
 		var username = req.params.username;
 
+		// req.headers.accept = 'application/json';
+
+		// console.log(req.headers,req.connection.remoteAddress);
+
 		userService.getUserDetail(username, function(response)
 		{
 			res.format(
