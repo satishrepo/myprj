@@ -1,6 +1,6 @@
 var app = angular.module('app', ['user']);
 
-app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider,)
+app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider)
 {
 	$httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
 
