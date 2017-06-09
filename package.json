@@ -23,11 +23,13 @@
     "mongoose": "^4.10.0",
     "node-inspector": "^1.1.1",
     "pug": "^2.0.0-rc.1",
+    "uglify-es": "github:mishoo/UglifyJS2#harmony",
     "winston": "^2.3.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.4",
-    "jshint": "^2.9.4"
+    "jshint": "^2.9.4",
+    "uglifyjs-webpack-plugin": "^0.4.3"
   }
 }

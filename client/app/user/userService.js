@@ -21,16 +21,6 @@ userService.factory('userService', function($http, $q)
 
 		getService(endpoint, dataObj)
 		{
-			/*var def = $q.defer();
-			$http.get(url+endpoint, dataObj).success(function(res)
-			{
-				def.resolve(res);
-			}).error(function(err)
-			{
-				def.reject(err);
-			});
-			return def.promise;*/
-
 			var def = $q.defer();
 			$http({
 				    url: url+endpoint,
