@@ -32,7 +32,8 @@ var DEV_DEST = {
     .pipe(gulp.dest('build/html'))
 });*/
 
-gulp.task('css', function(){
+gulp.task('css', function()
+{
   return gulp.src(DEV_SRC.CSS)
     .pipe(less())
     .pipe(minifyCSS())
@@ -40,7 +41,8 @@ gulp.task('css', function(){
 });
 
 
-gulp.task('js', function() {
+gulp.task('js', function() 
+{
   return gulp.src([DEV_SRC.JS_LIBS, DEV_SRC.JS])
   	.pipe(concat(DEV_DEST.JS_NAME))
     // .pipe(uglify({ mangle: false }))
@@ -49,4 +51,13 @@ gulp.task('js', function() {
     .pipe(gulp.dest(DEV_DEST.JS));
 });
 
-gulp.task('default', [ 'js', 'css' ]);
+gulp.task('clean', function () {
+  return gulp.src(DEV_DEST.JS+'/*.js', {read: false})
+    .pipe(clean({force:true}));
+});
+
+gulp.task('default', [ 'js', 'css' ], function()
+{
+  gulp.watch([DEV_SRC.JS_LIBS, DEV_SRC.JS], ['js']);
+  gulp.watch(DEV_SRC.CSS, ['css']);
+});

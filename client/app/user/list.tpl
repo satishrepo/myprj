@@ -1,3 +1,3 @@
 <ul ng-repeat="user in users">
-	<li ng-bind="user.username"></li>
+	<li ><a ui-sref="detail({username:user.username})">{{user.username}}</a></li>
 </ul>

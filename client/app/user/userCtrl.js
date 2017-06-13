@@ -8,12 +8,18 @@ user.config(function($stateProvider, $urlRouterProvider)
 		templateUrl :'/app/user/list.tpl',
 		controller : 'userCtrl'
 	})
+	.state('detail',
+	{
+		url : '/user/detail/:username',
+		templateUrl : '/app/user/detail.tpl',
+		controller : 'userDetailCtrl'
+	})
 })
 .controller('userCtrl', function($scope, userService)
 {
 	$scope.title = 'Welcome to user list';
 
-	userService.getService('user',{name:'aa'}).then(function(response)
+	userService.getService('list',{name:'aa'}).then(function(response)
 	{
 		if(response.statusCode == 200)
 		{
@@ -23,4 +29,34 @@ user.config(function($stateProvider, $urlRouterProvider)
 	{
 		console.log(err);
 	})
+})
+.controller('userDetailCtrl',function($scope,$stateParams, userService)
+{
+	$scope.title = 'User Detail';
+	var username = $stateParams.username;
+
+	var init = function()
+	{
+		getUserDetail();
+	};
+
+
+	var getUserDetail = function()
+	{
+		var postData = {username : username};
+
+		userService.getService('detail', postData).then(function(response)
+		{
+			if(response.statusCode == 200)
+			{
+				$scope.details = response.data;
+			}
+		}).catch(function(err)
+		{
+			console.log(err);
+		});
+	};
+
+	init();
+	
 });

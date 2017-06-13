@@ -26,7 +26,9 @@ var user = {
 	},
 	getUserDetail : function(req, res)
 	{
-		var username = req.params.username;
+		var username = req.query.username || req.params.username || req.body.username;
+
+		// console.log('username', req.query);
 
 		// req.headers.accept = 'application/json';
 

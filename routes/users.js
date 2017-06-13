@@ -5,12 +5,20 @@ var loginAuth = require('../middleware/loginAuth');
 
 var userController = require('../api/controllers/userController');
 
-router.get('/', userController.getUsers);
+// router.get('/', userController.getUsers);
 router.get('/list', userController.getUsers);
-router.get('/:username', userController.getUserDetail);
+// router.get('/:username', userController.getUserDetail);
+router.get('/detail/:username', userController.getUserDetail);
 router.post('/', loginAuth, userController.saveUser);
 router.delete('/', loginAuth, userController.removeUser);
 
+
+/********* API Routing (if want to make different routing) ******************/
+
+router.get('/detail/:username?', userController.getUserDetail);
+
+
+/********************** API Routing END ******************/
 
 
 
