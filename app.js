@@ -52,3 +52,4 @@ app.use('/login',login);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','pug');
 app.listen(8080);
+console.log('launch localhost:8080');
